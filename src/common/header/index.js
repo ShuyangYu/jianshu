@@ -1,8 +1,19 @@
 import React, { Component } from 'react';
-import { HeaderWrapper, Logo, Nav, NavItem, NavSearch, Addition, Btn, SearchWrapper } from './style'
+import { HeaderWrapper, Logo, Nav, NavItem, NavSearch, Addition, Btn, SearchWrapper } from './style';
+import { CSSTransition } from 'react-transition-group';
 // import '../statics/iconfont/iconfont'
 
 class Header extends Component {
+    constructor(props) {
+        super(props);
+        this.state ={
+            focused: false,
+        }
+
+    this.handleInputFoucs = this.handleInputFoucs.bind(this);
+    this.handleInputBlur = this.handleInputBlur.bind(this);
+    }
+
     render() {
         return (
             <HeaderWrapper> 
@@ -15,8 +26,18 @@ class Header extends Component {
                     </NavItem>
                     <NavItem className='right'>登录</NavItem>
                     <SearchWrapper>
-                        <NavSearch></NavSearch>
-                        <i className="iconfont">&#xe63d;</i>
+                        <CSSTransition
+                            in={this.state.focused}
+                            timeout={200}
+                            classNames="slide"
+                        >
+                            <NavSearch
+                                className={this.state.focused ? 'focused' : ''}
+                                onFocus={this.handleInputFoucs}
+                                onBlur={this.handleInputBlur}
+                            ></NavSearch>
+                        </CSSTransition>
+                        <i className={this.state.focused ? 'focused iconfont' : 'iconfont'}>&#xe63d;</i>
                     </SearchWrapper>
                 </Nav>
                 <Addition>
@@ -28,7 +49,19 @@ class Header extends Component {
                 </Addition>
             </HeaderWrapper>
         )
-    }    
+    }
+    
+    handleInputFoucs() {
+        this.setState({
+            focused: true,
+        })
+    }
+
+    handleInputBlur() {
+        this.setState({
+            focused: false,
+        })
+    }
 }
 
 export default Header;
