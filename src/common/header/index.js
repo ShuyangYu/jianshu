@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { actionCreators } from './store/index.js'
 import { HeaderWrapper, Logo, Nav, NavItem, NavSearch, Addition, Btn, SearchWrapper } from './style';
-import { SEARCH_FOCUS, SEARCH_BLUR } from './../../common/header/store/actionTypes.js';
 import { CSSTransition } from 'react-transition-group';
 // import '../statics/iconfont/iconfont'
 
@@ -52,17 +52,11 @@ const mapStateToProps = (state) => {
 const mapDispathToProps = (dispatch) => {
     return {
         handleInputFoucs() {
-            const action = {
-                type: SEARCH_FOCUS,
-            }
-            dispatch(action);
+            dispatch(actionCreators.searchFocus());
         },
 
         handleInputBlur() {
-            const action = {
-                type: SEARCH_BLUR,
-            }
-            dispatch(action);
+            dispatch(actionCreators.searchBlur());
         }
     }
 }
