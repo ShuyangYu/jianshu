@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { HeaderWrapper, Logo, Nav, NavItem, NavSearch, Addition, Btn } from './style'
+import { HeaderWrapper, Logo, Nav, NavItem, NavSearch, Addition, Btn, SearchWrapper } from './style'
+// import '../statics/iconfont/iconfont'
 
 class Header extends Component {
     render() {
@@ -9,12 +10,20 @@ class Header extends Component {
                 <Nav>
                     <NavItem className='left active'>首页</NavItem>
                     <NavItem className='left'>下载App</NavItem>
-                    <NavItem className='right'>Aa</NavItem>
+                    <NavItem className='right'>
+                        <i className="iconfont">&#xe636;</i>
+                    </NavItem>
                     <NavItem className='right'>登录</NavItem>
-                    <NavSearch></NavSearch>
+                    <SearchWrapper>
+                        <NavSearch></NavSearch>
+                        <i className="iconfont">&#xe63d;</i>
+                    </SearchWrapper>
                 </Nav>
                 <Addition>
-                    <Btn className='writeArticle'>写文章</Btn>
+                    <Btn className='writeArticle'>
+                        <i className="iconfont">&#xe615;</i>
+                        写文章
+                        </Btn>
                     <Btn className='signUp'>注册</Btn>
                 </Addition>
             </HeaderWrapper>
