@@ -14,14 +14,14 @@ export const Logo = styled.a.attrs({
     top: 0;
     left: 0;
     display: block;
-    width: 100px
+    width: 100px;
     height: 100%;
     background: url(${logoPic});
     background-size: contain;
 `
 
 export const Nav = styled.div`
-    width: 945px
+    width: 945px;
     height: 100%;
     padding-right: 90px;
     box-sizing: box-size;
@@ -66,23 +66,6 @@ export const SearchWrapper = styled.div`
             color: white;
         }
     }
-
-    .slide-enter {
-        width: 160px;
-        transition: all .2s ease-out;
-    }
-
-    .slide-enter-active {
-        width: 240px;
-    }
-
-    .slide-exit {
-        transition: all .2s ease-out;
-    }
-
-    .slide-exit-active {
-        width: 160px;
-    }
 `
 
 export const NavSearch = styled.input.attrs({
@@ -108,6 +91,23 @@ export const NavSearch = styled.input.attrs({
 
     &.focused{
         width: 240px;
+    }
+
+    &.slide-enter {
+        width: 160px;
+        transition: all .2s ease-out;
+    }
+
+    &.slide-enter-active {
+        width: 240px;
+    }
+
+    &.slide-exit {
+        transition: all .2s ease-out;
+    }
+
+    &.slide-exit-active {
+        width: 160px;
     }
 `
 
