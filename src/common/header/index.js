@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { HeaderWrapper, Logo, Nav, NavItem, NavSearch, Addition, Btn, SearchWrapper } from './style';
-import { SEARCH_FOCUS, SEARCH_BLUR } from './../../store/actionTypes.js';
+import { SEARCH_FOCUS, SEARCH_BLUR } from './../../common/header/store/actionTypes.js';
 import { CSSTransition } from 'react-transition-group';
 // import '../statics/iconfont/iconfont'
 
@@ -45,7 +45,7 @@ const Header = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        focused: state.focused,
+        focused: state.header.focused,
     }
 }
 
