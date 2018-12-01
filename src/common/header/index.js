@@ -48,23 +48,29 @@ class Header extends Component {
     }
 
     getListArea = () => {
-        const { focused, list, page } = this.props;
-        if(focused) {
+        const { mouseIn, focused, list, page, handleMouseEnter, handleMouseLeave, handleChangePage, totalPage } = this.props;
+        if(focused || mouseIn) {
             const pageList = [];
             const newList = list.toJS();
             let start =  (page - 1) * 10;
             let end = page * 10;
             // console.log(end);
-            while(start < end && start < newList.length) {
-                pageList.push(<SearchInfoItem key={newList[start]}>{newList[start]}</SearchInfoItem>)
-                start += 1;
+            if(newList.length) {
+                while(start < end && start < newList.length) {
+                    pageList.push(<SearchInfoItem key={newList[start]}>{newList[start]}</SearchInfoItem>)
+                    start += 1;
+                }
+    
             }
-
+            
             return (
-                <SearchInfo>
+                <SearchInfo 
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                >
                     <SearchInfoTitle>
                         热门搜索
-                        <SearchInfoSwitch>换一换</SearchInfoSwitch>
+                        <SearchInfoSwitch onClick={() => handleChangePage(page, totalPage)}>换一换</SearchInfoSwitch>
                     </SearchInfoTitle>
                     <SearchInfoList>
                         {pageList}
@@ -84,10 +90,13 @@ const mapStateToProps = (state) => {
         focused: state.getIn(['header', 'focused']),
         list: state.getIn(['header', 'list']),
         page: state.getIn(['header', 'page']),
+        mouseIn: state.getIn(['header', 'mouseIn']),
+        totalPage: state.getIn(['header', 'totalPage']),
     }
 }
 
 const mapDispathToProps = (dispatch) => {
+    // const { page} = this.props;
     return {
         handleInputFoucs() {
             dispatch(actionCreators.getList());
@@ -96,7 +105,23 @@ const mapDispathToProps = (dispatch) => {
 
         handleInputBlur() {
             dispatch(actionCreators.searchBlur());
-        }
+        },
+
+        handleMouseEnter() {
+            dispatch(actionCreators.mouseEnter());
+        },
+
+        handleMouseLeave() {
+            dispatch(actionCreators.mouseLeave());
+        },
+
+        handleChangePage(page, totalPage) {
+            if(page < totalPage) {
+                dispatch(actionCreators.changePage(page + 1));
+            } else {
+                dispatch(actionCreators.changePage(1));
+            }
+        },
     }
 }
 

@@ -11,6 +11,19 @@ export const searchBlur = () => ({
     type: actionTypes.SEARCH_BLUR,
 })
 
+export const mouseEnter = () => ({
+    type: actionTypes.MOUSE_ENTER,
+})
+
+export const mouseLeave = () => ({
+    type: actionTypes.MOUSE_LEAVE,
+})
+
+export const changePage = (nextPage) => ({
+    type: actionTypes.CHANGE_PAGE,
+    nextPage,
+})
+
 const _changeSearchList = (data) => ({
     type: actionTypes.CHANGE_SEARCH_LIST,
     data: fromJS(data),
