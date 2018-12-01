@@ -11,7 +11,7 @@ export const searchBlur = () => ({
     type: actionTypes.SEARCH_BLUR,
 })
 
-export const changeSearchList = (data) => ({
+const _changeSearchList = (data) => ({
     type: actionTypes.CHANGE_SEARCH_LIST,
     data: fromJS(data)
 })
@@ -21,7 +21,7 @@ export const getList = () => {
         axios.get('/api/headerList.json')
             .then((res) => {
                 const data = res.data;
-                dispatch(changeSearchList(data.data));
+                dispatch(_changeSearchList(data.data));
             }).catch(() => {
                 console.log('here');
             });

@@ -7,17 +7,14 @@ const defaultState = fromJS({
 });
 
 export default  (state=defaultState, action) => {
-    if(action.type === actionCreators.SEARCH_FOCUS) {
-        // 结合之前的对象和设置的值，返回一个新的对象
-        return state.set('focused', true);
+    switch(action.type) {
+        case actionCreators.SEARCH_FOCUS:
+            return state.set('focused', true);
+        case actionCreators.SEARCH_BLUR:
+            return state.set('focused', false);
+        case actionCreators.CHANGE_SEARCH_LIST:
+            return state.set('list', action.data);
+        default:
+            return state;
     }
-
-    if(action.type === actionCreators.SEARCH_BLUR) {
-        return state.set('focused', false);
-    }
-
-    if(action.type === actionCreators.CHANGE_SEARCH_LIST) {
-        return state.set('list', action.data);
-    }
-    return state;
 };  
