@@ -48,8 +48,18 @@ class Header extends Component {
     }
 
     getListArea = () => {
-        const { focused, list } = this.props;
+        const { focused, list, page } = this.props;
         if(focused) {
+            const pageList = [];
+            const newList = list.toJS();
+            let start =  (page - 1) * 10;
+            let end = page * 10;
+            // console.log(end);
+            while(start < end && start < newList.length) {
+                pageList.push(<SearchInfoItem key={newList[start]}>{newList[start]}</SearchInfoItem>)
+                start += 1;
+            }
+
             return (
                 <SearchInfo>
                     <SearchInfoTitle>
@@ -57,11 +67,7 @@ class Header extends Component {
                         <SearchInfoSwitch>换一换</SearchInfoSwitch>
                     </SearchInfoTitle>
                     <SearchInfoList>
-                        {
-                            list.map((item) => {
-                                return(<SearchInfoItem key={item}>{item}</SearchInfoItem>)
-                            })
-                        }
+                        {pageList}
                     </SearchInfoList>
                 </SearchInfo>
             )
@@ -77,6 +83,7 @@ const mapStateToProps = (state) => {
         // focused: state.get('header').get('focused'),
         focused: state.getIn(['header', 'focused']),
         list: state.getIn(['header', 'list']),
+        page: state.getIn(['header', 'page']),
     }
 }
 

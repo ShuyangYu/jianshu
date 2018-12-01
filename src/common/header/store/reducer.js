@@ -4,6 +4,8 @@ import { fromJS } from 'immutable' ;
 const defaultState = fromJS({
     focused: false,
     list: [],
+    page: 5,
+    totalPage: 1,
 });
 
 export default  (state=defaultState, action) => {
@@ -13,7 +15,7 @@ export default  (state=defaultState, action) => {
         case actionCreators.SEARCH_BLUR:
             return state.set('focused', false);
         case actionCreators.CHANGE_SEARCH_LIST:
-            return state.set('list', action.data);
+            return state.set('list', action.data).set('totalPage', action.totalPage);
         default:
             return state;
     }

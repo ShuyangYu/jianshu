@@ -13,7 +13,8 @@ export const searchBlur = () => ({
 
 const _changeSearchList = (data) => ({
     type: actionTypes.CHANGE_SEARCH_LIST,
-    data: fromJS(data)
+    data: fromJS(data),
+    totalPage: Math.ceil(data.length / 10),
 })
 
 export const getList = () => {
