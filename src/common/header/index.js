@@ -9,7 +9,7 @@ import { CSSTransition } from 'react-transition-group';
 class Header extends Component {
 
     render() {
-        const { focused, handleInputFoucs, handleInputBlur } = this.props;
+        const { focused, handleInputFoucs, handleInputBlur, list } = this.props;
         return (
             <HeaderWrapper> 
                 <Logo />
@@ -28,7 +28,7 @@ class Header extends Component {
                         >
                             <NavSearch
                                 className={focused ? 'focused' : ''}
-                                onFocus={handleInputFoucs}
+                                onFocus={() => {handleInputFoucs(list)}}
                                 onBlur={handleInputBlur}
                             ></NavSearch>
                         </CSSTransition>
@@ -108,8 +108,8 @@ const mapStateToProps = (state) => {
 const mapDispathToProps = (dispatch) => {
     // const { page} = this.props;
     return {
-        handleInputFoucs() {
-            dispatch(actionCreators.getList());
+        handleInputFoucs(list) {
+            (list.size === 0) && dispatch(actionCreators.getList());
             dispatch(actionCreators.searchFocus());
         },
 
