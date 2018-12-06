@@ -4,22 +4,42 @@
 <body>
 
   <script type="text/javascript">
-    var a = [1, 2, 3, 4, 5];
-    var b = [1, 2, 3, 5, 4];
-    var stack = [];
-    while (a[a.length - 1] != b[b.length - 1]) {
-      stack.push(a.pop());
+    function VerifySquenceOfBST(sequence) {
+      // write code here
+      console.log(sequence);
+      if (!sequence) return false;
+
+      function adjustSequenceOfBST(start, end, seq) {
+        console.log('start : ' + start + ' ' + end);
+        if (start == end) return true;
+        var i = start;
+        var result = true;
+        while (i < end) { 
+          if (seq[i] > seq[end]) {
+            break;
+          }
+          i++;
+        }
+        var middle = i;
+        console.log('i : ' + i);
+        while (i < end) {
+          if (seq[i] < seq[end]) {
+            return false;
+          }
+          i++;
+        }
+        console.log('end : ' + middle + ' ' + end);
+        if (middle < end) {
+          result = result && adjustSequenceOfBST(start, middle, seq) && adjustSequenceOfBST(middle, end - 1, seq);
+        } else {
+          return true
+        }
+
+        return result;
+      }
+      return adjustSequenceOfBST(0, sequence.length - 1, sequence) ? 'Yes' : 'No';
     }
-    // stack.push(a.pop());
-    // console.log(a);
-    // console.log(b);
-    // console.log(stack);
-    // while (b.length != 0) {
-    //   if (stack[stack.length - 1] == b.pop()) {
-    //     console.log(stack)
-    //     stack.pop();
-    //   }
-    // }
+    console.log(VerifySquenceOfBST([7,4,6,5]));
   </script>
 
 </body>
