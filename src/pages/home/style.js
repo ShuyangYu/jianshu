@@ -21,6 +21,7 @@ export const TopicWrapper = styled.div`
     overflow: hidden;
     padding: 20px 0 10px 0;
     margin-left:-14px;
+    border-bottom: 1px solid #dcdcdc;
 `
 
 export const TopicItem = styled.div`
@@ -41,6 +42,29 @@ export const TopicItem = styled.div`
         display: block;
         float: left;
         margin-right: 10px;
+    }
+`
+
+export const ListItem = styled.div`
+    overflow: hidden;
+    /* min-heght: 100px; */
+    float: right;
+    padding: 20px 0;
+    border-bottom: 1px solid #dcdcdc;
+    .item-img {
+        display: block;
+        /* height: 100%; */
+        width: 150px;
+        float: right;
+        border-radius: 10px;
+    }
+`
+
+export const ListInfo = styled.div`
+    float: left;
+    width: 475px;
+    .title {
+        font-size:
     }
 `
 
