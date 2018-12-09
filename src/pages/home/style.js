@@ -69,7 +69,24 @@ export const ListInfo = styled.div`
 `
 
 export const HomeRight = styled.div`
-    width: 240px;
+    margin-left: 15px;             
+    padding-top: 30px;
+    width: 280px;
     float: right;
 `
 
+export const RecommendWrapper = styled.div`
+    width: 280px;
+`
+
+export const RecommendItem = styled.div`
+    width: 100%;
+    height: 50px;
+    margin-bottom: 6px;
+    border-radius: 4px;
+    img {
+        width: 100%;
+        height: 100%;
+        margin-top: -3px;
+    }
+`
