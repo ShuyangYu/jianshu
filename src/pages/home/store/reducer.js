@@ -68,6 +68,38 @@ const defaultState = fromJS({
             id: 5,
             imgUrl: '//cdn2.jianshu.io/assets/web/banner-s-6-c4d6335bfd688f2ca1115b42b04c28a7.png'
         },           
+    ],
+    writterList: [
+        {
+            id: 1,
+            imgUrl: '//upload.jianshu.io/users/upload_avatars/3627484/eb973bb9-37ba-4d07-acec-850c0a66d1bb.png?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp',
+            title: '简书大学堂',
+            dsc: '写了13.6k字  1k喜欢',
+        },
+        {
+            id: 1,
+            imgUrl: '//upload.jianshu.io/users/upload_avatars/3627484/eb973bb9-37ba-4d07-acec-850c0a66d1bb.png?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp',
+            title: '简书大学堂',
+            dsc: '写了13.6k字  1k喜欢',
+        },
+        {
+            id: 1,
+            imgUrl: '//upload.jianshu.io/users/upload_avatars/3627484/eb973bb9-37ba-4d07-acec-850c0a66d1bb.png?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp',
+            title: '简书大学堂',
+            dsc: '写了13.6k字  1k喜欢',
+        },
+        {
+            id: 1,
+            imgUrl: '//upload.jianshu.io/users/upload_avatars/3627484/eb973bb9-37ba-4d07-acec-850c0a66d1bb.png?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp',
+            title: '简书大学堂',
+            dsc: '写了13.6k字  1k喜欢',
+        },
+        {
+            id: 1,
+            imgUrl: '//upload.jianshu.io/users/upload_avatars/3627484/eb973bb9-37ba-4d07-acec-850c0a66d1bb.png?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp',
+            title: '简书大学堂',
+            dsc: '写了13.6k字  1k喜欢',
+        },
     ]
 });
 
