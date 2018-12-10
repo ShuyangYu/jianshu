@@ -10,6 +10,11 @@ const _createGetHomeInfoAction = (data) => ({
     writterList: fromJS(data.writterList),
 })
 
+const _addMoreListAction = (data) => ({
+    type: actionTypes.ADD_MORE_LIST,
+    list: fromJS(data.articleList),
+})
+
 export const getHomeInfo = () => {
     return (dispatch) => {
         axios.get('/api/home.json')
@@ -17,6 +22,19 @@ export const getHomeInfo = () => {
                 const data = res.data.data;
                 console.log(data);
                 dispatch(_createGetHomeInfoAction(data));
+            }).catch(() => {
+                console.log('error');
+            });
+    }
+}
+
+export const getMoreList = () => {
+    return (dispatch) => {
+        axios.get('/api/homeList.json')
+            .then((res) => {
+                const data = res.data.data;
+                console.log(data);
+                dispatch(_addMoreListAction(data));
             }).catch(() => {
                 console.log('error');
             });

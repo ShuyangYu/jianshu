@@ -5,7 +5,8 @@ const defaultState = fromJS({
     topicList: [],
     articleList: [],
     recommendList: [],
-    writterList: []
+    writterList: [],
+    page: 1,
 });
 
 export default  (state=defaultState, action) => {
@@ -17,6 +18,8 @@ export default  (state=defaultState, action) => {
                 recommendList: action.recommendList,
                 writterList: action.writterList,
             })
+        case actionCreators.ADD_MORE_LIST:
+            return state.set('articleList', state.get('articleList').concat(action.list));
         default:
             return state;
     }

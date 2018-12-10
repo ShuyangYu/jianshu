@@ -74,6 +74,19 @@ export const ListInfo = styled.div`
     }
 `
 
+export const LoadMore = styled.div`
+    float: left;
+    width: 100%;
+    height: 40px;
+    margin: 30px 0;
+    line-height: 40px;
+    background: #a5a5a5;
+    text-align: center;
+    border-radius: 20px;
+    color: #fff;
+    cursor: pointer;
+`
+
 export const HomeRight = styled.div`
     margin-left: 15px;             
     padding-top: 30px;

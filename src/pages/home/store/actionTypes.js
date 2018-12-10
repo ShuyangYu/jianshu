@@ -1,1 +1,2 @@
 export const CHANGE_HOME_DATA = 'change_home_data';
+export const ADD_MORE_LIST = 'add_more_list';
