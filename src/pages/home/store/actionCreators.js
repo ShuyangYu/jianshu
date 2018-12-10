@@ -2,6 +2,11 @@ import * as actionTypes from './actionTypes.js';
 import axios from 'axios';
 import { fromJS } from 'immutable' ;
 
+export const toggleTopShow = (show) => ({
+    type: actionTypes.CHANGE_SHOW_SCROLL,
+    data: fromJS(show),
+})
+
 const _createGetHomeInfoAction = (data) => ({
     type: actionTypes.CHANGE_HOME_DATA,
     topicList: fromJS(data.topicList),

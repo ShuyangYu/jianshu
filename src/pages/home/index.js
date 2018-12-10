@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HomeWrapper, HomeLeft, HomeRight } from './style';
+import { HomeWrapper, HomeLeft, HomeRight, BackTop } from './style';
 import List from './components/List';
 import Topic from './components/Topic';
 import Recommend from './components/Recommend';
@@ -8,6 +8,9 @@ import { connect } from 'react-redux';
 import { actionCreators } from './store/index.js'
 
 class Home extends Component {
+    handleScrollTop() {
+        window.scrollTo(0, 0);
+    }
     render() {
         return (
             <div>
@@ -25,6 +28,7 @@ class Home extends Component {
                         <Recommend />
                         <Writter />
                     </HomeRight>
+                    { this.showScroll ? <BackTop onClick={this.handleScrollTop}>BackTop</BackTop> : <BackTop>{toString(this.showScroll)}</BackTop> }
                 </HomeWrapper>
             </div>
         )
@@ -32,15 +36,33 @@ class Home extends Component {
 
     componentDidMount() {
         this.props.changeHomeData();
+        this.bindEvents();
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.props.changeScrollTopShow);
+    }
+
+    bindEvents() {
+        window.addEventListener('scroll', this.props.changeScrollTopShow);
     }
 }
 
+const mapState = (state) => ({
+    showScroll: state.getIn(['home', 'showScroll']),
+})
 const mapDispathToProps = (dispatch) => {
     return {
         changeHomeData() {
-            const action = actionCreators.getHomeInfo();
-            dispatch(action);
+            dispatch(actionCreators.getHomeInfo());
+        },
+        changeScrollTopShow() {
+            if (document.documentElement.scrollTop > 300) {
+                dispatch(actionCreators.toggleTopShow(true));
+            } else {
+                dispatch(actionCreators.toggleTopShow(false));
+            }
         }
     }
 }
-export default connect(null, mapDispathToProps)(Home);
+export default connect(mapState, mapDispathToProps)(Home);

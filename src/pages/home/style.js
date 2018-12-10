@@ -141,3 +141,15 @@ export const WritterItem = styled.div`
         color: #969696;
     }
 `
+
+
+export const BackTop = styled.div`
+    position: fixed;
+    right: 30px;;
+    bottom: 30px;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    border: 1px solid #ccc;
+`
