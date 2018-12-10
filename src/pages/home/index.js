@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { HomeWrapper, HomeLeft, HomeRight, BackTop } from './style';
 import List from './components/List';
 import Topic from './components/Topic';
@@ -7,7 +7,7 @@ import Writter from './components/Writter';
 import { connect } from 'react-redux';
 import { actionCreators } from './store/index.js'
 
-class Home extends Component {
+class Home extends PureComponent {
     handleScrollTop() {
         window.scrollTo(0, 0);
     }
@@ -28,7 +28,7 @@ class Home extends Component {
                         <Recommend />
                         <Writter />
                     </HomeRight>
-                    { this.showScroll ? <BackTop onClick={this.handleScrollTop}>BackTop</BackTop> : <BackTop>{toString(this.showScroll)}</BackTop> }
+                    { this.props.showScroll ? <BackTop onClick={this.handleScrollTop}>BackTop</BackTop> : null }
                 </HomeWrapper>
             </div>
         )
@@ -51,6 +51,7 @@ class Home extends Component {
 const mapState = (state) => ({
     showScroll: state.getIn(['home', 'showScroll']),
 })
+
 const mapDispathToProps = (dispatch) => {
     return {
         changeHomeData() {
