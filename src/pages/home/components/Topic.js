@@ -14,7 +14,7 @@ class Topic extends PureComponent {
                             <img
                                 className='topic-pic'
                                 src={item.get('imgUrl')}
-                                // alt='120'
+                                alt=''
                             />
                             {item.get('title')}
                             </TopicItem>

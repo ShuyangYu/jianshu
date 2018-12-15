@@ -1,24 +1,34 @@
 import React, { Component } from 'react';
 import { DetailWrapper, Header, Content } from './style';
 import { connect } from 'react-redux';
+import { actionCreators } from './store/';
 
 class Detail extends Component {
     render() {
         return (
             <DetailWrapper>
                 <Header>{this.props.title}</Header>
-                <Content>
-                    <img src='//upload-images.jianshu.io/upload_images/4460877-53ed65259bfc395a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp' />
-                    {this.props.content}
-               </Content>
+                <Content dangerouslySetInnerHTML={{__html: this.props.content}}/>
             </DetailWrapper>
         )
     }
+
+    componentDidMount() {
+        this.props.getDetail()
+    }
 }
+
+
 
 const mapState = (state) => ({
     title: state.getIn(['detail', 'title']),
     content: state.getIn(['detail', 'content']),
 })
 
-export default connect(mapState, null)(Detail);
+const mapDispatch = (dispatch) => ({
+    getDetail() {
+        dispatch(actionCreators.getDetail())
+    }
+})
+
+export default connect(mapState, mapDispatch)(Detail);
