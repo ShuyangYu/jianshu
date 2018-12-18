@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { actionCreators } from './store/index.js'
+import { actionCreators as loginActionCreators } from '../../pages/login/store'
 import { HeaderWrapper, Logo, Nav, NavItem, NavSearch, Addition, Btn, SearchWrapper, SearchInfo, SearchInfoTitle, SearchInfoSwitch, SearchInfoItem, SearchInfoList } from './style';
 import { CSSTransition } from 'react-transition-group';
 import { Link } from 'react-router-dom';
@@ -10,7 +11,7 @@ import { Link } from 'react-router-dom';
 class Header extends Component {
 
     render() {
-        const { focused, handleInputFoucs, handleInputBlur, list } = this.props;
+        const { focused, handleInputFoucs, handleInputBlur, list, login, logout } = this.props;
         return (
             <HeaderWrapper> 
                 <Link to='/'>
@@ -22,7 +23,10 @@ class Header extends Component {
                     <NavItem className='right'>
                         <i className="iconfont">&#xe636;</i>
                     </NavItem>
-                    <NavItem className='right'>登录</NavItem>
+                    {
+                        login ? <NavItem onClick={logout} className='right'>退出</NavItem> : 
+                            <Link to='login'> <NavItem className='right'>登录</NavItem> </Link>
+                    }
                     <SearchWrapper>
                         <CSSTransition
                             in={focused}
@@ -105,6 +109,7 @@ const mapStateToProps = (state) => {
         page: state.getIn(['header', 'page']),
         mouseIn: state.getIn(['header', 'mouseIn']),
         totalPage: state.getIn(['header', 'totalPage']),
+        login: state.getIn(['login', 'login']),
     }
 }
 
@@ -143,6 +148,9 @@ const mapDispathToProps = (dispatch) => {
                 dispatch(actionCreators.changePage(1));
             }
         },
+        logout() {
+            dispatch(loginActionCreators.logout())
+        }
     }
 }
 
