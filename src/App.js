@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { GlobalIconfontStyle}  from './statics/iconfont/iconfont';
 import store from './store';
 import Home from './pages/home';
-import Detail from './pages/detail';
+import Detail from './pages/detail/loadable.js';
 import Login from './pages/login';
 import Write from './pages/write';
 import { BrowserRouter, Route } from 'react-router-dom';
